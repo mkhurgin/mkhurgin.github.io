@@ -41,4 +41,14 @@ $(function() {
     $("#c4").attr("src","http://golearntocode.com/images/cards/" + shuffledeck[3] + ".png" )
     $("#c5").attr("src","http://golearntocode.com/images/cards/" + shuffledeck[4] + ".png" )
   })
+  $(".original").on("click", function(event) {
+    event.preventDefault()
+    $("#c1").attr("src","http://golearntocode.com/images/cards/ace_of_hearts.png" )
+    $("#c2").attr("src","http://golearntocode.com/images/cards/ace_of_hearts.png" )
+    $("#c3").attr("src","http://golearntocode.com/images/cards/ace_of_hearts.png" )
+    $("#c4").attr("src","http://golearntocode.com/images/cards/ace_of_hearts.png" )
+    $("#c5").attr("src","http://golearntocode.com/images/cards/ace_of_hearts.png" )
+  })
+
+
 })
