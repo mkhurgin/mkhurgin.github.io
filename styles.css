@@ -32,6 +32,7 @@
    height:100px;
 }
 
+
 .css-selector {
   font-family: 'Dancing Script', cursive;
   color:#FFD700;
@@ -55,4 +56,9 @@
   color:black;
   font-family: 'Sigmar One';
   background-color: red;
+}
+#giftid{
+  color:black;
+  font-family: 'Sigmar One';
+  background-color: Yellow;
 }

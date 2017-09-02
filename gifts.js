@@ -1,18 +1,3 @@
-// This code runs when the page loads
-$(function() {
-
-  $(".giftrec").on("click", function(event) {
-    event.preventDefault()
-    var elementThatWasClicked = $(this)
-    console.log(elementThatWasClicked)
-    elementThatWasClicked.parent().remove()
-
-    // remove the element
-  })
-
-})
-
-
 
 
 // THIS ADDS ARRAYS
@@ -59,10 +44,55 @@ function insertionSort (array) {
 
 
 
-//MAIN FUNCTION CALLED ON CLICK
-var apple=0
+var apple=17
 $(function() {
+  //list of checkboxes obtained
+  $(window).load(function() {
+    event.preventDefault()
 
+    var element = document.getElementById("getChecks");
+
+    //START CREATE CHECKBOXES
+    var stringArrayed = giftArray()
+    var usedArray = stringArrayed[0].split(/,/)
+    console.log(stringArrayed.length)
+    //console.log(stringArrayed[0].split(/,/)[0])
+
+    var labelStart =4 //This is the row # that characteristics start at; SEE CSV File
+    var checkdiv, checklabel, check, checktext
+    checkdiv = document.createElement("div");
+      checkdiv.setAttribute("class","col-md-6");
+      checkdiv.setAttribute("align","center");
+
+
+    for(i=labelStart;i<stringArrayed.length;i++){
+      checklabel = document.createElement("label");
+        checklabel.setAttribute("class","checkbox-inline");
+        checklabel.setAttribute("id","checklabel"+i-labelStart+1)
+
+      check = document.createElement("input")
+        check.setAttribute("class","form-check-input");
+        check.setAttribute("type","checkbox");
+        check.setAttribute("id","inlineCheckbox"+i-labelStart+1);
+        //console.log(i-labelStart+1);
+        check.setAttribute("value","");
+
+      var checktext =document.createTextNode(stringArrayed[i].split(/,/)[0]);
+      checklabel.append(check);
+      checklabel.append(checktext);
+
+      checkdiv.append(checklabel);
+//***UNCHECK BELOW IF YOU REINSTATE THIS METHOD********//
+      //element.appendChild(checkdiv);
+      
+      //document.getElementById("inlineCheckbox1").type="radio";
+    }
+
+    //END CREATE checkboxes
+    //document.getElementById("inlineCheckbox1").type="radio";
+  })
+
+  //MAIN FUNCTION CALLED ON CLICK
   $("#getRecommendations").on("click", function(event) {
     event.preventDefault()
     // List of gifts
@@ -89,19 +119,19 @@ $(function() {
     var giftRatings=[0,0,0,0,0,0,0,0,0,0,0,0,0];
     var OutputGifts=[0,0,0,0,0,0,0,0,0,0,0,0,0]
     // console.log(giftList.gifts[1])
-    var cb1 = document.getElementById("inlineCheckbox1").checked;
-    var cb2 = document.getElementById("inlineCheckbox2").checked;
-    var cb3 = document.getElementById("inlineCheckbox3").checked;
-    var cb4 = document.getElementById("inlineCheckbox4").checked;
-    var cb5 = document.getElementById("inlineCheckbox5").checked;
+    //window.document.getElementById("inlineCheckbox1").type="radio";
+
+    var cb1 = window.document.getElementById("inlineCheckbox1").checked;
+    var cb2 = window.document.getElementById("inlineCheckbox2").checked;
+    var cb3 = window.document.getElementById("inlineCheckbox3").checked;
+    var cb4 = window.document.getElementById("inlineCheckbox4").checked;
+    var cb5 = window.document.getElementById("inlineCheckbox5").checked;
 
     var male = [0,1,1,1,1,1,1,0,0,0,0,0,0];
     var female = [0,1,0,0,0,0,0,1,1,1,1,1,1];
     var fashion = [0,0,0,0,0,1,0,0,0,1,0,0,1];
     var outdoors = [0,0,1,0,1,0,1,0,0,0,0,0,1];
     var subscription =[0,0,0,1,0,0,0,0,1,0,0,0,0];
-    console.log(cb1);
-    console.log(cb5);
 
     if (cb1 ===true){
         var giftRatings=sumArray(male,giftRatings);
@@ -135,13 +165,64 @@ $(function() {
     var picCounter =1
     for(var i = sortedElements.length-1 ; i >= sortedElements.length-numberPics ;){
      $("#mg"+picCounter).attr("src","./allgifts/"+sortedElements[i]+".jpg" )
-     console.log(i)
+     //console.log(i)
      i--
      picCounter++
     }
 
-    console.log(giftArray())
+//GRAB THE GIFT ARRAY - CURRENTLY RETURNS the Unconcatenated array.
+    function giftArray (){
+      var giftData = "Checkbox Field ,Noise Cancelling Headphones,Solar Powered Phone Battery Pack,Audible Subscription,Customized Flask with Initials,Cufflinks,Multi-Tool,Musical Wine Glasses,Birchbox Subscription,Fancy or Stylish Hat,Creative Tea Infuser,Framed Music Lyrics,Cowgirl Boots;Image Name,1,2,3,4,5,6,7,8,9,10,11,12;Product Link,,,,,,,,,,,,;Description,,,,,,,,,,,,;Male,1,1,1,1,1,1,0,0,0,0,0,0;Female,0,0,1,0,0,0,1,1,1,1,1,1;Fashion,0,0,0,1,1,0,0,1,1,0,0,1;Outdoors,0,1,0,0,0,1,0,0,0,0,0,1;Subscription,0,0,1,0,0,0,0,1,0,0,0,0"
+
+      var stringArray = giftData.split(/;/)
+
+      return stringArray
+      //console.log(stringArray)
+      //console.log(stringArray.length)
+      //console.log(stringArray[2].length)
+      //var giftStringArray = stringArray[4].split(/,/)
+      //THIS KEPT RETURNING A FLAT ARRAY RATHER THAN 2d WITH LENGTH 13 :(; USING WORKAROUND
+      /*var arr1 = stringArray[0].split(/,/)
+      var arr2 = stringArray[1].split(/,/)
+      var arr3 = []
+      var tempArrayData = arr1.concat(arr2)
+
+
+      //concatenate into a 1D array
+      for( var i = 2; i < stringArray.length; i++) {
+        arr3 = stringArray[i].split(/,/)
+        var tempArrayData = tempArrayData.concat(arr3)
+      }
+      //convert into a 2D array
+      var xlength = arr1.length
+      var ylength = stringArray.length
+      var totallength=tempArrayData.length
+      var giftDataArray=[200,200]
+      var m = 0
+      //console.log(xlength + " " +ylength + " " + totallength)
+
+      /*for ( var f = 0; f < totallength;) {
+        for (var k = 0; k<xlength;k++){
+          giftDataArray[m,k]=tempArrayData[f]
+          f++
+        }
+        m++
+        //console.log("f" +f + " k"+k+" m"+m)
+        //console.log(giftDataArray)
+      }
+      //console.log(giftDataArray)
+
+
+      /*for ( var i = 0; i < array1.length; i++ ) {
+        result.push( [ array1[i], array2[i] ] );
+      }
+
+      return giftDataArray;*/
+    }
+
+    //console.log(giftArray())
     //END DISPLAYS RECOMMENDED gifts
+
     /*var csvv = new XMLHttpRequest();
     var url = "c:/code/mkhurgin.github.io/test.csv"
     csvv.open("GET", url, false);
@@ -150,7 +231,7 @@ $(function() {
     var result = $.csv.toArrays(csvv)
     console.log(result)
     */
-    /*var url = "C:\code\mkhurgin.github.io\test.csv"
+    /*var url = "https://github.com/mkhurgin/mkhurgin.github.io/blob/master/test.csv"
     var request = new XMLHttpRequest();
     request.open("GET", url, false);
     //request.send(null);
@@ -168,21 +249,70 @@ $(function() {
   })
 })
 
+
+
+
+//GRAB THE GIFT ARRAY - CURRENTLY RETURNS the Unconcatenated array.
 function giftArray (){
-  var header = "I, like, to, win"
-  var headerArray = header.split(/,/)
-  return headerArray;
+  var giftData = "Checkbox Field ,Noise Cancelling Headphones,Solar Powered Phone Battery Pack,Audible Subscription,Customized Flask with Initials,Cufflinks,Multi-Tool,Musical Wine Glasses,Birchbox Subscription,Fancy or Stylish Hat,Creative Tea Infuser,Framed Music Lyrics,Cowgirl Boots;Image Name,1,2,3,4,5,6,7,8,9,10,11,12;Product Link,,,,,,,,,,,,;Description,,,,,,,,,,,,;Male,1,1,1,1,1,1,0,0,0,0,0,0;Female,0,0,1,0,0,0,1,1,1,1,1,1;Fashion,0,0,0,1,1,0,0,1,1,0,0,1;Outdoors,0,1,0,0,0,1,0,0,0,0,0,1;Subscription,0,0,1,0,0,0,0,1,0,0,0,0"
+
+  var stringArray = giftData.split(/;/)
+
+  return stringArray
+  //console.log(stringArray)
+  //console.log(stringArray.length)
+  //console.log(stringArray[2].length)
+  //var giftStringArray = stringArray[4].split(/,/)
+  //THIS KEPT RETURNING A FLAT ARRAY RATHER THAN 2d WITH LENGTH 13 :(; USING WORKAROUND
+  /*var arr1 = stringArray[0].split(/,/)
+  var arr2 = stringArray[1].split(/,/)
+  var arr3 = []
+  var tempArrayData = arr1.concat(arr2)
+
+
+  //concatenate into a 1D array
+  for( var i = 2; i < stringArray.length; i++) {
+    arr3 = stringArray[i].split(/,/)
+    var tempArrayData = tempArrayData.concat(arr3)
+  }
+  //convert into a 2D array
+  var xlength = arr1.length
+  var ylength = stringArray.length
+  var totallength=tempArrayData.length
+  var giftDataArray=[200,200]
+  var m = 0
+  //console.log(xlength + " " +ylength + " " + totallength)
+
+  /*for ( var f = 0; f < totallength;) {
+    for (var k = 0; k<xlength;k++){
+      giftDataArray[m,k]=tempArrayData[f]
+      f++
+    }
+    m++
+    //console.log("f" +f + " k"+k+" m"+m)
+    //console.log(giftDataArray)
+  }
+  //console.log(giftDataArray)
+
+
+  /*for ( var i = 0; i < array1.length; i++ ) {
+    result.push( [ array1[i], array2[i] ] );
+  }
+
+  return giftDataArray;*/
 }
 
+/*
 function LoadFile() {
     var oFrame = document.getElementById("frmFile");
     var strRawContents = oFrame.contentWindow.document.body.childNodes[0].innerHTML;
     while (strRawContents.indexOf("\r") >= 0)
         strRawContents = strRawContents.replace("\r", "");
     var arrLines = strRawContents.split("\n");
-    alert("File " + oFrame.src + " has " + arrLines.length + " lines");
+    console.log("File " + oFrame.src + " has " + arrLines.length + " lines");
     for (var i = 0; i < arrLines.length; i++) {
         var curLine = arrLines[i];
-        alert("Line #" + (i + 1) + " is: '" + curLine + "'");
+        console.log("Line #" + (i + 1) + " is: '" + curLine + "'");
     }
 }
+*/

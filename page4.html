@@ -46,6 +46,9 @@
           <li>
             <a class="navbarlink" href="page4.html">Custom Recommendations</a>
           </li>
+          <li>
+            <a class="navbarlink" href="page5.html">All the Great Gifts</a>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
@@ -60,40 +63,49 @@
   </nav>
   <!-- End Navbar -->
 
+  <!-- OPEN CSV -->
+  <!-- <iframe id="frmFile" src="test.txt" onload="LoadFile();" style="display: none;"></iframe> -->
+
   <!-- Start recommendation questions -->
+
+
   <div class="row">
-    <iframe id="frmFile" src="test.txt" onload="LoadFile();" style="display: none;"></iframe>
+
     <div class="col-md-6" align="center">
 
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> Male
+        <label class="checkbox-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value=""> Male
         </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Female
+
+        <label class="checkbox-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value=""> Female
         </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> Fashion
+
+
+        <label class="checkbox-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value=""> Fashion
         </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option3"> Outdoors
+
+
+        <label class="checkbox-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value=""> Outdoors
         </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option3"> Subscription
+
+
+        <label class="checkbox-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value=""> Subscription
         </label>
-      </div>
+
 
     </div>
+    <!-- THESE ARE DOM CREATED CHECKBOXES BUT WE CAN"T MANIPULATE THEM*** -->
+    <!-- <div class ="row" id="getChecks" > -->
+      <!-- Javascript populated this place with checkboxes -->
+    <!-- </div> -->
+
+
     <div class="col-md-6">
-      <button type="button" class="btn btn-primary" id="getRecommendations">Primary</button>
+      <button type="button" class="btn btn-primary" id="getRecommendations">Get Recommendations!</button>
     </div>
   </div>
   <!-- End recommmendation questions -->
@@ -133,3 +145,5 @@
         <img id="mg6" src="./allgifts/6.jpg" class="img-thumbnail img-responsive">
     </div>
   </div>
+</body>
+</html>
