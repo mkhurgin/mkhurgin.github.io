@@ -34,7 +34,7 @@ $(function() {
         newH2 = document.createElement("h2")
           newH2.setAttribute("align","center")
           newH2.setAttribute("id","giftid")
-        newText=document.createTextNode(i+" "+giftNames[i]);
+        newText=document.createTextNode(i-9+" "+giftNames[i]);
 
         newImg = document.createElement("img")
           newImg.setAttribute("src","./allgiftsfinal/"+(i-labelstart+1)+".jpg");
