@@ -52,7 +52,10 @@
   margin:auto;
   display:block;
 }
-
+#sitelinkhero{
+  margin:auto;
+  display:block;
+}
 #customtitle{
   font-family: 'Comic Sans MS';
   background-color: green;
