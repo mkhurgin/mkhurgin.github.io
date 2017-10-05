@@ -4,7 +4,11 @@
 function sumArray(a,b){
   var c = [];
   for (var i = 0; i < Math.max(a.length, b.length); i++) {
-    c.push((a[i] || 0) + (b[i] || 0));
+    if(a[i]==-1 || b[i]==-1){
+      c.push(-1)
+    } else{
+      c.push((a[i] || 0) + (b[i] || 0));
+    }
   }
   return c;
 }
@@ -136,6 +140,10 @@ $(function() {
     //console.log(stringArrayed.length)
     var boxchecked
     var ystart=4
+    var giftModifier=giftArrayModifier()
+    allgiftRatings=sumArray(arrayStringtoNum(giftModifier),allgiftRatings);
+    console.log(allgiftRatings)
+    console.log("llook up!")
     for(i=1;i<=(stringArrayed.length-ystart);i++){
       boxchecked = window.document.getElementById("inlineCheckbox"+i).checked;
       if (boxchecked ===true){
@@ -153,15 +161,69 @@ $(function() {
     console.log(sortedElements)
     console.log(allgiftRatings)
 
-    //DISPLAYS THE TOP RECOMMENDED gifts
+    //DISPLAYS THE TOP RECOMMENDED gifts*******************
     var numberPics =6 //how many pics to display
     var picCounter =1
+    //this is old method; new method creates the div's
+    var giftNames = stringArrayed[0].split(/,/)
+    var giftLinks = stringArrayed[2].split(/,/)
+      //Gift Names start on 11th cell AKA index 10
+    var labelstart=10
     for(var i = sortedElements.length-1 ; i >= sortedElements.length-numberPics ;){
      $("#mg"+picCounter).attr("src","./allgiftsfinal/"+sortedElements[i]+".jpg" )
+     $("#link"+picCounter).attr("href",giftLinks[sortedElements[i]+labelstart-1] )
+     $("#name"+picCounter).text(giftNames[sortedElements[i]+labelstart-1])
+     //setAttribute("src","./allgiftsfinal/"+sortedElements[i-k]+".jpg");
      //console.log(i)
      i--
      picCounter++
+   }
+
+
+/*
+    var newDivRow, newDivCol, newA, newH2, newText, newImg
+    var element = document.getElementById("getChecks");
+
+    for(var i = sortedElements.length-1 ; i >= sortedElements.length-numberPics ;){
+
+
+        newDivRow=document.createElement("div")
+          newDivRow.setAttribute("class","row")
+
+      for(k=0;k<=2;k++){
+        newDivCol = document.createElement("div");
+          newDivCol.setAttribute("class","col-md-4");
+
+        newA = document.createElement("a")
+          newA.setAttribute("href",giftLinks[sortedElements[i-k]+labelstart-1])
+          newA.setAttribute("target","_blank")
+
+        newH2 = document.createElement("h2")
+          newH2.setAttribute("align","center")
+          newH2.setAttribute("id","giftid")
+        newText=document.createTextNode(giftNames[sortedElements[i-k]+labelstart-1]);
+
+        newImg = document.createElement("img")
+          newImg.setAttribute("src","./allgiftsfinal/"+sortedElements[i-k]+".jpg");
+          newImg.setAttribute("class","img-thumbnail img-responsive")
+          newImg.setAttribute("style","height:300")
+          newImg.setAttribute("align","middle")
+
+        newH2.append(newText)
+        newA.append(newH2);
+        newA.append(newImg);
+        newDivCol.append(newA);
+
+        newDivRow.append(newDivCol)
+
+      }
+
+      element.appendChild(newDivRow);
+    //  console.log(giftLinks[i])
+      //number that goes below for 'i' is the number of pictures to put per row
+      i=i-3
     }
+    */
     //*END NEW AUTO CREATE REC***********************
 
   /* OLD GIFT RATINGS TEST******************************************
@@ -356,6 +418,13 @@ function giftArrayNameLink (){
 
 }
 
+//this Function generates the array that provides a boost to certain gifts
+function giftArrayModifier (){
+  var giftDataModifier = "NA,NA,NA,,,,,,,Modifier,0.5,0.5,0,0,0,0,0,0,0.5,0,0,0,0,0.5,0,0.5,0.5,0,0.5,0,0,0,0,0,0.5,0,0.5,0,0,0,0.5,0,0,0,0,0,0,0.5,0,0,0,0.5,0,0,0,0.5,0,0,0,0,0,0,0.5,0,0,0,0,0,0,0.5,0,0,0,0.5,0,0,0,0.5,0.5,0,0.5,0,0.5,0.5,0.5,0,0,0,0,0,0,0.5,0,0,0,0,0,0,0,0.5,0,0,0,0.5,0,0.5,0.5,0,0,0.5,0,0,0,0,0.6,0.5,0.5,0.5,0,0,0,0,0,0.5,0,0,0,0,0,0,0.5,0.5,0,0,0,0"
+  var modifierArray = giftDataModifier.split(/,/)
+  return modifierArray
+
+}
 
 /*
 function LoadFile() {

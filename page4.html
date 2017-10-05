@@ -52,6 +52,9 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
+            <a class="navbarlink">Pardon our dust.  We're still building!</a>
+          </li>
+          <li>
             <a href="http://www.amazon.com">
               Search Gifts On
               <i class="fa fa-amazon" aria-hidden="true"></i>
@@ -66,9 +69,14 @@
   <!-- OPEN CSV -->
   <!-- <iframe id="frmFile" src="test.txt" onload="LoadFile();" style="display: none;"></iframe> -->
 
+
+
   <!-- Start recommendation questions -->
+  <div class="row">
 
-
+    <h1 id="customtitle"> <img id="monkeyid" src="monkey.png">  Let Maksik Help You Choose the Perfect Gift! </h1>
+    <h5 id="customtitle">Think of who you want to give a gift.  Now check the boxes that match the occasion and person! And then hit "Get Recommendations."</h5>
+  </div>
   <div class="row">
 
 
@@ -197,7 +205,7 @@
 
   </div>
   <div class="row">
-    <button type="button" class="btn btn-primary" id="getRecommendations">Get Recommendations!</button>
+    <button type="button" class="btn btn-primary" id="getRecommendations">GET RECOMMENDATIONS!</button>
   </div>
   <!-- End recommmendation questions -->
 
@@ -206,17 +214,24 @@
   <!-- *********************************************** -->
   <div class="row">
     <div class="col-md-4">
-        <!-- <h2 class="giftrec">Noise Cancelling Headphones</h2> -->
-        <img id="mg1" src="./allgifts/1.jpg" class="img-thumbnail img-responsive">
+        <a id="link1" href = "https://www.amazon.com" target="_blank">
+          <h2 align="center" id="name1"> Noise Cancelling Headphones </h2>
+          <img id="mg1" src="./allgifts/1.jpg" class="img-thumbnail img-responsive">
+        </a>
     </div>
     <div class="col-md-4">
         <!-- <h2 class="giftrec">Solar Powered Phone Charger Pack</h2> -->
-        <img id="mg2" src="./allgifts/2.jpg" class="img-thumbnail img-responsive">
+        <a id="link2" href = "https://www.amazon.com" target="_blank">
+          <h2 align="center" id="name2"> Solar Powered Phone Charger Pack </h2>
+          <img id="mg2" src="./allgifts/2.jpg" class="img-thumbnail img-responsive">
+        </a>
     </div>
     <div class="col-md-4">
         <!-- <h2 class="giftrec">Audible Membership</h2> -->
-        <img id="mg3" src="./allgifts/3.jpg" class="img-thumbnail img-responsive">
-
+        <a id="link3" href = "https://www.amazon.com" target="_blank">
+          <h2 align="center" id="name3"> Audible Membership </h2>
+          <img id="mg3" src="./allgifts/3.jpg" class="img-thumbnail img-responsive">
+        </a>
     </div>
   </div>
 
@@ -225,16 +240,28 @@
   <div class="row">
     <div class="col-md-4">
         <!-- <h2 class="giftrec">Noise Cancelling Headphones</h2> -->
-        <img id="mg4" src="./allgifts/4.jpg" class="img-thumbnail img-responsive">
+        <a id="link4" href = "https://www.amazon.com" target="_blank">
+          <h2 align="center" id="name4"> Engraved Flask </h2>
+          <img id="mg4" src="./allgifts/4.jpg" class="img-thumbnail img-responsive">
+        </a>
     </div>
     <div class="col-md-4">
         <!-- <h2 class="giftrec">Solar Powered Phone Charger Pack</h2> -->
-        <img id="mg5" src="./allgifts/5.jpg" class="img-thumbnail img-responsive">
+        <a id="link5" href = "https://www.amazon.com" target="_blank">
+          <h2 align="center" id="name5"> Cufflinks </h2>
+          <img id="mg5" src="./allgifts/5.jpg" class="img-thumbnail img-responsive">
+        </a>
     </div>
     <div class="col-md-4">
         <!-- <h2 class="giftrec">Audible Membership</h2> -->
-        <img id="mg6" src="./allgifts/6.jpg" class="img-thumbnail img-responsive">
+        <a id="link6" href = "https://www.amazon.com" target="_blank">
+          <h2 align="center" id="name6"> Multi-tool </h2>
+          <img id="mg6" src="./allgifts/6.jpg" class="img-thumbnail img-responsive">
+        </a>
     </div>
+  </div>
+  <div class ="row" id="getChecks" >
+    <!-- Javascript populated this place with checkboxes -->
   </div>
 </body>
 </html>

@@ -24,7 +24,7 @@
 }
 
 .jumbotron h1 {
-    color: orange;
+    color: Blue ;
 }
 
 .img.resize{
@@ -47,6 +47,24 @@
   background-color: yellow;
 }
 /*ID element modifications*/
+
+#getRecommendations{
+  margin:auto;
+  display:block;
+}
+
+#customtitle{
+  font-family: 'Comic Sans MS';
+  background-color: green;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+#monkeyid{
+  width:100px;
+  height:100px;
+}
+
 #womanid{
   color:red;
   font-family: 'Sigmar One';
@@ -58,6 +76,36 @@
   background-color: red;
 }
 #giftid{
+  color:black;
+  font-family: 'Sigmar One';
+  background-color: Yellow;
+}
+#name1{
+  color:black;
+  font-family: 'Sigmar One';
+  background-color: Yellow;
+}
+#name2{
+  color:black;
+  font-family: 'Sigmar One';
+  background-color: Yellow;
+}
+#name3{
+  color:black;
+  font-family: 'Sigmar One';
+  background-color: Yellow;
+}
+#name4{
+  color:black;
+  font-family: 'Sigmar One';
+  background-color: Yellow;
+}
+#name5{
+  color:black;
+  font-family: 'Sigmar One';
+  background-color: Yellow;
+}
+#name6{
   color:black;
   font-family: 'Sigmar One';
   background-color: Yellow;
